@@ -11,7 +11,12 @@ package com.dleon.test.util;
 public class Mathematics {
 
     public static long factorial(long value) {
-        return value == 1 ? 1 : value * factorial(value - 1);
+        
+        long result = 1;
+        
+        while (value > 0) result *= value--;
+        
+        return result;
     }
     
 }
