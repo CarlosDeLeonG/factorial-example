@@ -18,8 +18,12 @@ public class App {
         
         if (args.length < 1) return;
         
-        value = Long.parseLong(args[0]);
-        
+        try {
+            value = Long.parseLong(args[0]);
+        } catch(NumberFormatException e) {
+            System.err.println("Error: " + e.getStackTrace());
+            return;
+        }
         System.out.println("Factorial of " + value + ": " + Mathematics.factorial(value));
     }
 }
