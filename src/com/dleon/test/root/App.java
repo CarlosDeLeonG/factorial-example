@@ -13,6 +13,13 @@ import com.dleon.test.util.Mathematics;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("Factorial of 5: " + Mathematics.factorial(5));
+        
+        long value = 0;
+        
+        if (args.length < 1) return;
+        
+        value = Long.parseLong(args[0]);
+        
+        System.out.println("Factorial of " + value + ": " + Mathematics.factorial(value));
     }
 }
