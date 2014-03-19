@@ -5,6 +5,7 @@
 package com.dleon.test.ui;
 
 import com.dleon.test.util.Mathematics;
+import java.awt.Color;
 
 /**
  *
@@ -36,8 +37,11 @@ public class MainFrame extends javax.swing.JFrame {
         resetButton = new javax.swing.JButton();
         factTextField = new javax.swing.JFormattedTextField();
         exitButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        messageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Factorial Calculator");
 
         valueTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("value"));
         valueTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
@@ -67,8 +71,6 @@ public class MainFrame extends javax.swing.JFrame {
         factTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Factorial"));
         factTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         factTextField.setEnabled(false);
-        result = Mathematics.factorial(value);
-        factTextField.setValue(Long.valueOf(result));
 
         exitButton.setText("Exit");
         valueTextField.setValue(Long.valueOf(value));
@@ -78,24 +80,32 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        messageLabel.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(okButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(resetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(valueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(factTextField)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 178, Short.MAX_VALUE)
-                        .addComponent(exitButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(okButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(resetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(valueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(factTextField)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 178, Short.MAX_VALUE)
+                                .addComponent(exitButton))))
+                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(messageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -111,7 +121,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(okButton)
                         .addComponent(resetButton))
                     .addComponent(exitButton))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(messageLabel)
+                .addContainerGap())
         );
 
         pack();
@@ -122,10 +136,16 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        value = (long) valueTextField.getValue();
-        result = Mathematics.factorial(value);
-        factTextField.setValue(Long.valueOf(result));
+        try {
+            value = (long) valueTextField.getValue();
+            result = Mathematics.factorial(value);
+            factTextField.setValue(Long.valueOf(result));
+        } catch(Exception e) {
+            messageLabel.setText(errorMsg + " " + e.getMessage() + "!");
+            messageLabel.setForeground(Color.red);
+        }
         if(MainSM.goNextState() == MainSM.CALCULATED) calculated();
+        
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
@@ -181,6 +201,8 @@ public class MainFrame extends javax.swing.JFrame {
         valueTextField.setEnabled(true);
         factTextField.setValue(null);
         valueTextField.setValue(null);
+         messageLabel.setText(userMsg);
+        messageLabel.setForeground(Color.blue);
     }
     
     private void calculated() {
@@ -191,6 +213,8 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
     private javax.swing.JFormattedTextField factTextField;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel messageLabel;
     private javax.swing.JButton okButton;
     private javax.swing.JButton resetButton;
     private javax.swing.JFormattedTextField valueTextField;
@@ -198,4 +222,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private long value  = 1;
     private long result = 1;
+    
+    private String userMsg = "Welcome...";
+    private String errorMsg = "Error:";
 }
