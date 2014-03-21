@@ -20,10 +20,11 @@ public class App {
         
         try {
             value = Long.parseLong(args[0]);
-        } catch(NumberFormatException e) {
+            System.out.println("Factorial of " + value + ": " + Mathematics.factorial(value));
+        } catch(Exception e) {
             System.err.println("Error: " + e.getStackTrace());
             return;
         }
-        System.out.println("Factorial of " + value + ": " + Mathematics.factorial(value));
+        
     }
 }
