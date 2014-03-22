@@ -41,7 +41,7 @@ public class MainFrame extends javax.swing.JFrame {
         messageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/dleon/test/ui/LabelsBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/dleon/test/ui/resources/LabelsBundle"); // NOI18N
         setTitle(bundle.getString("FACTORIAL CALCULATOR")); // NOI18N
 
         valueTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("VALUE"))); // NOI18N
