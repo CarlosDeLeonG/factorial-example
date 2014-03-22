@@ -6,6 +6,8 @@ package com.dleon.test.ui;
 
 import com.dleon.test.util.Mathematics;
 import java.awt.Color;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -16,9 +18,12 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
-        initComponents();
+    public MainFrame()  {
         
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("img/calc.png")));
+        initComponents();
+        ImageIcon water = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("img/ok.png")));
+        okButton.setIcon(water);
         if(MainSM.goNextState() == MainSM.RESET)reset();
         
     }
@@ -54,8 +59,7 @@ public class MainFrame extends javax.swing.JFrame {
                 valueTextFieldCaretPositionChanged(evt);
             }
         });
-
-        okButton.setText("Ok");
+		
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
