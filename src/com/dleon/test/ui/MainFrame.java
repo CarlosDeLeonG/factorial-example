@@ -224,6 +224,6 @@ public class MainFrame extends javax.swing.JFrame {
     private long value  = 1;
     private long result = 1;
     
-    private String userMsg = java.util.ResourceBundle.getBundle("com/dleon/test/ui/LabelsBundle").getString("WELCOME");
-    private String errorMsg = java.util.ResourceBundle.getBundle("com/dleon/test/ui/LabelsBundle").getString("ERROR");
+    private String userMsg = java.util.ResourceBundle.getBundle("com/dleon/test/ui/resources/LabelsBundle").getString("WELCOME");
+    private String errorMsg = java.util.ResourceBundle.getBundle("com/dleon/test/ui/resources/LabelsBundle").getString("ERROR");
 }
