@@ -41,7 +41,8 @@ public class MainFrame extends javax.swing.JFrame {
         messageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Factorial Calculator");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/dleon/test/ui/LabelsBundle"); // NOI18N
+        setTitle(bundle.getString("FACTORIAL CALCULATOR")); // NOI18N
 
         valueTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("value"));
         valueTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
@@ -61,7 +62,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        resetButton.setText("Reset");
+        resetButton.setText(bundle.getString("RESET")); // NOI18N
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
@@ -72,7 +73,7 @@ public class MainFrame extends javax.swing.JFrame {
         factTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         factTextField.setEnabled(false);
 
-        exitButton.setText("Exit");
+        exitButton.setText(bundle.getString("EXIT")); // NOI18N
         valueTextField.setValue(Long.valueOf(value));
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +224,6 @@ public class MainFrame extends javax.swing.JFrame {
     private long value  = 1;
     private long result = 1;
     
-    private String userMsg = "Welcome...";
-    private String errorMsg = "Error:";
+    private String userMsg = java.util.ResourceBundle.getBundle("com/dleon/test/ui/LabelsBundle").getString("WELCOME");
+    private String errorMsg = java.util.ResourceBundle.getBundle("com/dleon/test/ui/LabelsBundle").getString("ERROR");
 }
