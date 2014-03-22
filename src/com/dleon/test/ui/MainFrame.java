@@ -44,7 +44,7 @@ public class MainFrame extends javax.swing.JFrame {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("com/dleon/test/ui/LabelsBundle"); // NOI18N
         setTitle(bundle.getString("FACTORIAL CALCULATOR")); // NOI18N
 
-        valueTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("value"));
+        valueTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("VALUE"))); // NOI18N
         valueTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         valueTextField.setToolTipText("");
         valueTextField.addInputMethodListener(new java.awt.event.InputMethodListener() {
